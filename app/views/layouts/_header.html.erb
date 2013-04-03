@@ -7,7 +7,8 @@
 				<% if signed_in?  %>
 					<li><%= link_to "Profile", user_path(current_user) %></li> 
 					<li><%= link_to "Users", users_path %></li> 
-					<li><%= link_to "Settings", edit_user_path(current_user) %></li>  
+					<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+
 				<%end%>
 
               <% if signed_in? and current_user.admin %>
@@ -20,7 +21,8 @@
 				<li><%= link_to "Sign out", signout_path %></li>  
 				<% else%>
 				<li><%= link_to "Sign in", signin_path %>
-				<%= link_to facebook_logo, "#", {:onclick => "Fb_Login();"} %>  </li>          
+				<%= link_to facebook_logo, "#", {:onclick => "Fb_Login();"} %>  </li>
+                  <%=  render "shared/fb" %>
 				<% end%>
 			</ul>
 		</nav>
