@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   def show               
      id = params[:id]
      @user = User.find(id)  
-     @title = @user.name 
-     @microposts = @user.microposts.paginate(:page => params[:page])
+     @title = @user.name
   end 
   
   def following
@@ -53,7 +52,6 @@ class UsersController < ApplicationController
     @user.reload
     set_access_token nil
     current_user.reload
-    remove_user_fb_connections
     redirect_to edit_user_path
   end
   
@@ -105,14 +103,14 @@ class UsersController < ApplicationController
                         :password_confirmation => random_password, :activated => true)
             set_access_token data['oauth_token']
             sign_in(user)
-            create_user_fb_connections
+
             redirect_to user
           else
             if valid_facebook_cookie_or_signed_request? params[:signed_request]
               existing_user.update_attribute(:fb_user_id, @fb_id)
               set_access_token data['oauth_token'] #params[:access_token]
               sign_in(existing_user)
-              create_user_fb_connections
+
               redirect_to existing_user         
             end
         end

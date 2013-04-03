@@ -17,17 +17,7 @@
 class User < ActiveRecord::Base      
   attr_accessor  :password, :fb_access_token  #defines new getter and setter
   attr_accessible :name, :email, :password, :password_confirmation, :fb_user_id, :fb_access_token
-  
-  has_many :microposts, :dependent => :destroy  
-  has_many :relationships, :dependent => :destroy,
-                           :foreign_key => "follower_id" #since relationship table does not have user_id, must specify key to join to
-  
-  has_many :reverse_relationships, :dependent => :destroy,
-                           :foreign_key => "followed_id",      
-                           :class_name => "Relationship" #specify class / table since no rev rel table exists
 
-  has_many :following, :through => :relationships, :source => :followed #must specify join column since otherwise it assumes singluar of following
-  has_many :followers, :through => :reverse_relationships, :source => :follower
 
   email_reg_ex = /\A[\w+\-.]+@[a-z\d.]+\.[a-z]+\z/i
   
@@ -60,22 +50,7 @@ class User < ActiveRecord::Base
   def has_password?(submitted_password)
      encrypted_password == encrypt(submitted_password)
   end    
-  
-  def feed
-     Micropost.from_users_followed_by(self)
-  end   
-  
-  def following?(followed)
-     self.relationships.find_by_followed_id(followed.id)
-  end           
-  
-  def follow!(followed)
-     relationships.create!(:followed_id => followed.id)
-  end        
-  
-  def unfollow!(followed)
-     relationships.find_by_followed_id(followed.id).destroy    
-  end
+
 
   def activate (key)
     if key == salt
