@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20120512222955) do
 
-  create_table "fb_connections", :force => true do |t|
-    t.integer  "fbc_user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "fbc_fb_id"
-  end
-
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
