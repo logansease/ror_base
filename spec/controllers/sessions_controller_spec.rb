@@ -82,7 +82,7 @@ describe SessionsController do
     
     before(:each) do
       @user = Factory(:user)  
-      request.cookies['fbsr_179989805389930'] = 'yCsSoeF9po3K-TJ6xvLnApzFOXxYYQ7-lKa_Al2IMKc.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUUEyN25pMmF4VFdrcXowMWtmZXMzTVg1TDFadkJaQnlfR0xiREhIeTZuS2I2OUZNXzRiTmF5UTdOOUU0dmVEY3hCeUlOZDVlVXF1M3k2OFV0elp5YnBqR2l2S2dhRno2aERFakE3c0tkZFRfenFZdVRQVWlyZlJjSERrTXlaZWhwSDFxek9oNFhFa3Z0aDFwRVF6OUZsdEFQaUZkVzRlVm5NVXpkT0ZpMXBwVkEiLCJpc3N1ZWRfYXQiOjEzMjQ4NTI4NjgsInVzZXJfaWQiOiI2MjA2MTk3In0'    
+      request.cookies["fbsr_#{CONSTANTS[  :fb_id]}"]  = 'yCsSoeF9po3K-TJ6xvLnApzFOXxYYQ7-lKa_Al2IMKc.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUUEyN25pMmF4VFdrcXowMWtmZXMzTVg1TDFadkJaQnlfR0xiREhIeTZuS2I2OUZNXzRiTmF5UTdOOUU0dmVEY3hCeUlOZDVlVXF1M3k2OFV0elp5YnBqR2l2S2dhRno2aERFakE3c0tkZFRfenFZdVRQVWlyZlJjSERrTXlaZWhwSDFxek9oNFhFa3Z0aDFwRVF6OUZsdEFQaUZkVzRlVm5NVXpkT0ZpMXBwVkEiLCJpc3N1ZWRfYXQiOjEzMjQ4NTI4NjgsInVzZXJfaWQiOiI2MjA2MTk3In0'
     end
     
     describe "linking" do
@@ -133,13 +133,13 @@ describe SessionsController do
     describe "failure" do
       
       it "should not log a user in with an invalid cookie" do
-        request.cookies['fbsr_179989805389930'] = ""
+        request.cookies["fbsr_#{CONSTANTS[  :fb_id]}"] = ""
         post :fb_signin, :fb_id => 0
         controller.should_not be_signed_in
       end
         
       it "should redirect to the root path" do
-        request.cookies['fbsr_179989805389930'] = ""
+        request.cookies["fbsr_#{CONSTANTS[  :fb_id]}"]  = ""
         post :fb_signin, :fb_id => @user.fb_user_id
         response.should redirect_to root_path
       end

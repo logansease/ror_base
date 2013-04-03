@@ -81,12 +81,12 @@ module SessionsHelper
   def valid_facebook_cookie_or_signed_request?(signed_request = nil) 
 
     if(!signed_request)
-      signed_request = cookies["fbsr_179989805389930"]
+      signed_request = cookies["fbsr_#{CONSTANTS[  :fb_id]}"]
     end
     
     if signed_request && !signed_request.blank?
 
-      secret = "bb18cde894bb67f6bead01fb16911a7c"
+      secret = CONSTANTS[  :fb_secret]
   
       #decode data
       encoded_sig, payload = signed_request.split('.')
