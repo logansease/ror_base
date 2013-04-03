@@ -51,8 +51,7 @@ module SessionsHelper
       store_location
       redirect_to signin_path, :notice => "Please sign in"
   end   
-  
-  #TODO  Would like to find a way to mark helper method location 
+
   def redirect_back_or(default)
      redirect_to (session[:return_to] || default)  
      clear_return_to 
@@ -61,8 +60,7 @@ module SessionsHelper
   def clear_return_to
     session[:return_to] = nil 
   end  
-             
-  #TODO method comments
+
   def store_location(path = request.fullpath)
       session[:return_to] = path  
     end   

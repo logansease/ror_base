@@ -38,6 +38,9 @@ class SessionsController < ApplicationController
           render "users/new_fb"
           return
         end
+
+      else
+        flash.now[:error] = "Invalid Facebook request"
     end
     
     redirect_to root_path
