@@ -1,0 +1,11 @@
+upgrade rails, ruby
+rvm
+rake rails:update:bin
+
+
+assets--
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'yui-compressor' # i'm using yui for compressor
+end
