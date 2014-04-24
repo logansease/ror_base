@@ -12,5 +12,8 @@ push a branch other than master to heroku
 git push heroku [other branch]:master
 
 
+reset
+git reset --hard HEAD
+
 create a second heroku app
 heroku create --remote [other heroku name]

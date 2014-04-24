@@ -21,3 +21,7 @@ tail -f logs/test.log
 
 heroku rake db:reset
 heroku rake db:create
+
+rvm: in .rvmrc
+rvm use 1.9.3-p0@projectName
+
