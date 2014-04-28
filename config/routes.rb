@@ -21,10 +21,8 @@ SampleApp::Application.routes.draw do
       get :new_fb
     end
   end
-  
-  resources :microposts, :only => [:create, :destroy] 
-  resources :relationships, :only => [:create, :destroy]
-  resources :fb_connections, :only => [:create, :destroy]
+
+  resources :base_objects
 
   root :to => "pages#home" 
   match '/signup', :to => 'users#new', via: [:get]
