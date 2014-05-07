@@ -74,7 +74,10 @@ module SessionsHelper
      # flash[:notice] = "Please sign in to access this page" or below
      deny_access unless signed_in?
     end
-    
+
+  def check_admin
+    redirect_to root_path unless signed_in? and current_user.admin?
+  end
 
   def valid_facebook_cookie_or_signed_request?(signed_request = nil) 
 

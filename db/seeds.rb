@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+User.delete_all
+user = User.create(:name => 'Logan Sease', :password => 'password', :password_confirmation => 'password', :email => 'lsease@gmail.com')
+user.update_attribute("activated", true)
+user.update_attribute("admin", true)

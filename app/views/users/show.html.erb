@@ -1,18 +1,20 @@
 
-<table class="profile" summary="Profile information">
-   <tr>  
-		<td class="main">
+
+		<div class="main left">
 			 <h1> 
 			   <%= gravatar_for @user %>
 			   <%= @user.name %>
 
 			</h1>    
 
-		</td>
-	    <td class="sidebar round">
+		</div>
+	    <div class="well right">
 		    <strong>Name</strong> <%= @user.name%> <br/>
 			<strong>URL</strong> <%= link_to user_path(@user.id), user_path(@user.id) %>  <br/>
 
-	    </td>
-	</tr>                                                
-</table>
+          <span id="connect_container">
+             <%=  render "relationships/connect_button", :followed_id => @user.id, :type => RELATIONSHIP_TYPE_USER, :object => @user %>
+          </span>
+
+	     </div>
+

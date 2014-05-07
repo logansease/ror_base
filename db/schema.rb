@@ -18,12 +18,25 @@ ActiveRecord::Schema.define(:version => 20120512222955) do
     t.string "name"
   end
 
-  create_table "page_contents", :force => true do |t|
-    t.integer  "page_id"
-    t.text     "content_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "pages", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "content"
   end
+  add_index "pages", ["title"], :name => "index_pages_on_title"
+
+  create_table "relationships", force: true do |t|
+    t.string   "relationship_type"
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.boolean  "is_unsubscribed",   default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -39,5 +52,6 @@ ActiveRecord::Schema.define(:version => 20120512222955) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["fb_user_id"], :name => "index_users_on_fb_user_id"
 
 end

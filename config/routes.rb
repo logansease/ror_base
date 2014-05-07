@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do  
- 
+
+  #for SEO
+  get '/pages/index' => redirect('/pages')
   
   resources :sessions, :only => [:new, :create, :destroy] do 
     collection do
@@ -23,14 +25,21 @@ SampleApp::Application.routes.draw do
   end
 
   resources :base_objects
+  resources :pages
+  resources :relationships, :only => [:create, :destroy]
 
   root :to => "pages#home" 
-  match '/signup', :to => 'users#new', via: [:get]
-  match '/contact', :to => 'pages#contact', via: [:get]
-  match '/about', :to => 'pages#about', via: [:get]
-  match '/help', :to => 'pages#help', via: [:get]
-  match '/signin', :to => 'sessions#new', via: [:get]
-  match '/signout', :to => 'sessions#destroy', via: [:get]
+  get '/signup', :to => 'users#new'
+  get '/contact', :to => 'pages#contact'
+  get '/about', :to => 'pages#about'
+  get '/help', :to => 'pages#help'
+  get '/signin', :to => 'sessions#new'
+  get '/signout', :to => 'sessions#destroy'
+  get '/admin', :to => 'pages#admin'
+  get '/maintenance', :to => 'pages#maintenance'
+  get '/error', :to => 'pages#error'
+  get '/sitemap', :to => 'pages#site_map'
+  get '/sitemap_xml', :to => 'pages#site_map_xml'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,6 @@
 
   <div>
-    <% if @current_user and @current_user.admin %>
+    <% if current_user and current_user.admin %>
          <%= link_to "Edit", edit_base_category_path(@object) %>
     <% end %>
 

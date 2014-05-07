@@ -1,6 +1,6 @@
 <h1>All</h1>
 
-<%if @current_user and @current_user.admin %>
+<%if current_user and current_user.admin %>
   <%= link_to "Add New", new_base_object_path %>
 <% end %>
       

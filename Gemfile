@@ -13,8 +13,11 @@ gem 'faker', '0.3.1'
 gem 'json'
 gem 'koala', '1.3.0'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'mail'
 gem 'protected_attributes'
+gem 'friendly_id', '~> 5.0.3'
+gem 'rails_autolink'
 
 
 # Bundle gems for the local environment. Make sure to

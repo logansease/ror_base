@@ -24,5 +24,8 @@ SampleApp::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   config.eager_load = false
+
+  config.serve_static_assets = true
+
 end
 

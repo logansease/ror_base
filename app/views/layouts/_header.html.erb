@@ -1,18 +1,32 @@
-      <header>
-	  <%= link_to logo, root_path %>  
-	  	<nav class="round">
+<header id="header_container">
+  <div id="header"  class="header_columns">
+  <div class="c1">
+    <div class="logo">
+      <%= link_to image_tag("rails.png", alt: "App Home", :height => 20), root_path %>
+    </div>
+  </div>
+  <div class="c2">
+    <!--
+    <%= form_tag('/search') do %>
+        <%= text_field_tag "search", nil, placeholder: "Search Apps" %>
+        <%= submit_tag "Go" %>
+    <% end %>
+    -->
+  </div>
+  <div class="c3">
+    <nav class="main-nav">
 	    	<ul>
 				<li><%= link_to "Home", root_path %></li>  
 				 
 				<% if signed_in?  %>
 					<li><%= link_to "Profile", user_path(current_user) %></li> 
-					<li><%= link_to "Users", users_path %></li> 
+					<li><%= link_to "Users", users_path %></li>
 					<li><%= link_to "Settings", edit_user_path(current_user) %></li>
 
 				<%end%>
 
-              <% if signed_in? and current_user.admin %>
-                     <li><%= link_to "Admin", "#"%></li>
+              <% if signed_in? and current_user.admin? %>
+                     <li><%= link_to "Admin", "/admin" %></li>
                <% end %>
 				
 				
@@ -20,10 +34,13 @@
 				<% if signed_in?  %>
 				<li><%= link_to "Sign out", signout_path %></li>  
 				<% else%>
-				<li><%= link_to "Sign in", signin_path %>
-				<%= link_to facebook_logo, "#", {:onclick => "Fb_Login();"} %>  </li>
+				<li><%= link_to "Sign in", signin_path %></li>
+				<li><%= link_to facebook_logo, "#", {:onclick => "Fb_Login();"} %>  </li>
                   <%=  render "shared/fb" %>
 				<% end%>
 			</ul>
-		</nav>
-	</header>
+    </nav>
+  </div>
+
+  </div>
+</header>
