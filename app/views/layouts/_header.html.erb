@@ -30,7 +30,7 @@
                <% end %>
 				
 				
-				<li><%= link_to "Help", help_path %></li>  
+              <li><%= link_to "Help", page_path(:id => "help") %></li>
 				<% if signed_in?  %>
 				<li><%= link_to "Sign out", signout_path %></li>  
 				<% else%>
