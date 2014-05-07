@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]   
   before_filter :admin_user, :only => [:destroy]
   
-  def new 
+  def new
+    @tos_page = Page.find_by_title("user_terms")
     @title = "Sign up" 
     @user = User.new
   end  
@@ -62,9 +63,16 @@ class UsersController < ApplicationController
   end   
   
   def update          
-    #note this assignment isnt needed since it is also called in the pre-filter         
-    #@user = User.find(id = params[:id]) 
+
+    previous_email = @user.email
     if @user.update_attributes(params[:user])
+
+      # if the user changes their email, we should revalidate it.
+      if params[:user][:email] != previous_email
+        @user.update_attribute("activated", false)
+       send_activation_to @user
+      end
+
        redirect_to(@user, :flash => {:success =>"Profile Updated."} )
     else 
        @title = "Edit user"  
@@ -101,6 +109,7 @@ class UsersController < ApplicationController
             user = User.create!(:name => data['registration']['name'], :email => data['registration']['email'], 
                         :fb_user_id => data['user_id'], :password => random_password, 
                         :password_confirmation => random_password, :activated => true)
+            user.update_attribute("activated",true)
             set_access_token data['oauth_token']
             sign_in(user)
 
@@ -140,16 +149,7 @@ class UsersController < ApplicationController
 
   def send_activation
     user = User.find(session['activate_id'])
-    if(!user.activated)
-      key = user.salt
-      data = '{ "user_id" : "' + user.id.to_s + '", "key" : "' + key + '" }'
-      key_encrypt = encrypt data, CONSTANTS[  :activation_key]
-      key_64 = Base64.encode64 key_encrypt
-      key64url =  CGI::escape(key_64)
-      @url = "http://" + request.host_with_port + "/users/activate?key=#{key64url}"
-      UserMailer.registration_activation( user, @url).deliver
-      @email = user.email
-    end
+    send_activation_to user
   end
 
   def send_password_recovery
@@ -195,7 +195,20 @@ class UsersController < ApplicationController
 
   
   private
-  
+
+  def send_activation_to user
+    if(!user.activated)
+      key = user.salt
+      data = '{ "user_id" : "' + user.id.to_s + '", "key" : "' + key + '" }'
+      key_encrypt = encrypt data, CONSTANTS[  :activation_key]
+      key_64 = Base64.encode64 key_encrypt
+      key64url =  CGI::escape(key_64)
+      @url = "http://" + request.host_with_port + "/users/activate?key=#{key64url}"
+      UserMailer.registration_activation( user, @url).deliver
+      @email = user.email
+    end
+  end
+
   def correct_user     
      @user = User.find(params[:id]) 
      redirect_to(root_path) unless current_user?(@user)

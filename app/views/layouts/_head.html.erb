@@ -1,13 +1,13 @@
 <% if @object and @object.respond_to? :meta_title and @object.meta_title %>
     <title><%= @object.meta_title %></title>
 <% else %>
-    <title>appsting | The Best Apps Live Here.</title>
+    <title><%= CONSTANTS[  :app_name] %> </title>
 <% end %>
 
 <% if @object and @object.respond_to? :meta_description and @object.meta_description %>
     <meta name="description" content=" <%= @object.meta_description %>">
 <% else %>
-    <meta name="description" content="appsting is the community where developers and users connect. Find new apps and connect to your favorite apps and developers.">
+    <meta name="description" content="<%=CONSTANTS[  :app_description]%>">
 <%end %>
 
 	<%= csrf_meta_tag %>
@@ -23,7 +23,7 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-44400518-1', 'auto');
+    ga('create', '<%= CONSTANTS[  :google_analytics_id] %>', 'auto');
     ga('send', 'pageview');
 
     </script>
