@@ -1,21 +1,13 @@
-<div class="left fixed_width_300">
-  <h1>Admin Links</h1>
+<div class="well">
+  <h3>Admin Links</h3>
   <p><%= link_to 'Pages', pages_path %>  </p>
   <p><%= link_to 'Users', users_path %>  </p>
 </div>
 
 
-<% if !@ads.blank? %>
-<div class="grey_back">
-  <h3>Ads Awaiting Approval:</h3>
-  <% @ads.each do |ad| %>
-    <p><%= link_to ad.name, edit_advertisement_path(ad)%></p>
-  <% end %>
-</div>
-<% end %>
 
 
-<h1>Stats</h1>
-<div class="grey_back fixed_width_300">
-    <h3>Users: <%= @user_count %></h3>
+<div class="well">
+    <h3>Stats</h3>
+    <p><strong>Users:</strong> <%= @user_count %></p>
 </div>

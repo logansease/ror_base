@@ -10,10 +10,35 @@
     <meta name="description" content="<%=CONSTANTS[  :app_description]%>">
 <%end %>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<%= csrf_meta_tag %>
-	<%= render 'layouts/stylesheets'  %>
-	<%= javascript_include_tag "application" %>
-    <%= javascript_include_tag 'bootstrap.min.js' %>
+
+    <%= javascript_include_tag "application" %>
+
+    <!-- Latest bootstrap compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional bootstrap theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <%= stylesheet_link_tag 'boot_strapped'%>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"/>
+<![endif]-->
+
+
+ <%= stylesheet_link_tag 'jquery.pathSelector-all'%>
+    <!-- Latest bootstrap compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 	<%= javascript_include_tag 'facebook.js'%>
     <% if Rails.env.production? %>
     <!-- Google Analytics -->

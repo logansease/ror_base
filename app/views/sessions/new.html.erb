@@ -1,42 +1,50 @@
 
-
-<h1>Sign in</h1>
-
-<%= form_for(:session, :url =>  sessions_path ) do |f| %>
-    
-<div class="field">
-  <%= f.label :email%>
-  <%= f.text_field :email%>
-</div> 
-
-<div class="field">
-  <%= f.label :password%>
-  <%= f.password_field :password%>
-</div>
-        
-<div class="actions">
-  <%= f.submit "Sign in"%>
-</div>
-
-<% end %>
-
-<p>Forgotten <%= link_to "Password?", "#", :onclick => "$('#new_link_modal').modal('show');" %></p>
-<p> <%= link_to "Sign up now", signup_path %></p>
-
-
-<div id="new_link_modal" class="modal hide fade">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>Password recovery</h3>
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><strong>Sign in </strong></h3></div>
+        <div class="panel-body">
+            <%= form_for(:session, :url =>  sessions_path ) do |f| %>
+                <div class="form-group">
+                    <%= f.label :email%>
+                    <%= f.text_field :email, :class => "form-control"%>
+                </div>
+                <div class="form-group">
+                    <div class="field">
+                    <%= f.label :password%> <span>Forgotten <%= link_to "Password?", "#", :onclick => "$('#new_link_modal').modal('show');" %> </span>
+                    <%= f.password_field :password, :class => "form-control"%>
+                </div>
+                <button type="submit" class="btn btn-sm btn-default">Sign in</button>
+            <% end %>
+         </div>
+     </div>
     </div>
-    <div class="modal-body">
+  <p> Not a member yet? <%= link_to "Sign up now", signup_path %></p>
+</div>
+
+
+
+
+<div id="new_link_modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="grey_text centered">
+          <a class="icon-cancel right_padding left" data-dismiss="modal"></a>
+          Password recovery</h3>
+      </div>
+      <div class="modal-body">
         <p>Enter your account email address.</p>
 
-    <%= form_tag("/users/send_password_recovery", :method => "post") do %>
-      <div class="field">
-          <%= text_field_tag(:email) %>
-          <%= submit_tag("Go") %>
+            <%= form_tag("/users/send_password_recovery", :method => "post") do %>
+            <div class="field">
+            <%= text_field_tag(:email) %>
+            <%= submit_tag("Go") %>
+            </div>
+            <% end %>
       </div>
-      <% end %>
-    </div>
-</div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
