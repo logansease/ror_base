@@ -10,6 +10,7 @@ body {
   height: 100%;
   /* Negative indent footer by it's height */
   margin: 0 auto -65px;
+    padding: 0 0 65px;
 }
 
 
@@ -67,6 +68,4 @@ body {
 }
 .copyright {
     font-size: 12px;
-}
-
 }

@@ -1,1 +1,5 @@
 This is a sample app created for the RoR tutorial
+It contains tons of awesome stuff that will help you get started with a new Ruby on Rails web app
+very quickly and easily.
+
+Don't forget to initialize settings found in fog.rb, app_constants.rb and setup_mail.rb and session_store.rb

@@ -19,6 +19,10 @@ gem 'protected_attributes'
 gem 'friendly_id', '~> 5.0.3'
 gem 'rails_autolink'
 
+gem "carrierwave"
+gem 'rmagick'
+gem "fog", "~> 1.3.1"
+
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
