@@ -2,7 +2,7 @@
 	<%= link_to object.title, object %>
 	
 	<% if current_user and current_user.admin? %>
-	| <%= link_to "delete", object, :method => :delete, :confirm => "You Sure?",
+	| <%= link_to "delete", object, :method => :delete, :data => { :confirm => "Are you sure?"},
 									:title => "Delete #{object.title}"%>
 	<%end%>
 	   

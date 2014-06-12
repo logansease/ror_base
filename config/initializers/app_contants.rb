@@ -4,7 +4,7 @@ CONSTANTS= Hash.new
 
 CONSTANTS[  :activation_key] =           "activate!plusarandomstringofnumbers"
 CONSTANTS[  :fb_id] =               "432701290149585"
-CONSTANTS[  :fb_secret] =           ""
+CONSTANTS[  :fb_secret] =           "29006173bb560571176ce021f8978005"
 CONSTANTS[  :app_domain] = "logansease.com"
 CONSTANTS[  :app_name] = "logansease test app"
 CONSTANTS[  :app_description] = "this is a test app for ruby on rails"
