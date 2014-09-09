@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120512222955) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              :default => false
-    t.integer  "fb_user_id"
+    t.float  "fb_user_id"
     t.boolean  "activated",          :default => false
     t.boolean  "recover_password",   :default => false
   end
