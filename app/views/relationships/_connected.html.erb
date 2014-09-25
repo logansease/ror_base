@@ -2,10 +2,9 @@
 <% type = "" if local_assigns[:type].nil? %>
 
 
-<%= form_for(current_user.user_relationships.find_by_followed_id(followed_id),
-				:html => {:method => :delete, :id => "connect_button", :class => "new_button icon-ok-1 right" },
-			    :remote =>true) do |f| %>
-
+<%= form_for(current_user.relationships.find_by_followed_id_and_relationship_type(followed_id,type),
+             :html => {:method => :delete, :id => "connect_form" },
+             :remote =>true) do |f| %>
 
  	<%= f.submit "connected!" %>
 

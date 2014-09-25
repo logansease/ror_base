@@ -320,31 +320,22 @@
 
 /* Connect button */
 
-#connect_container
-{
-    display: block;
-    float: right;
-    width: 350px;
-    padding-top: 3px
-}
-
 #connection_count {
-    font-size: 18px;
-    line-height: 35px;
-    margin-right: 16px;
-    padding-left: 10px;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 #connect_button input{
-  background:none;
-  border:none;
-  font-size:14px;
+    background:none;
+    border:none;
+    font-size:14px;
     color: #FFFFFF !important;
     text-align: center;
     font-weight: bold;
     padding-bottom: 10px;
     width: 70%;
 }
+
 
 .checked:before {
     content: '\2713';

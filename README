@@ -1,5 +1,28 @@
 This is a sample app created for the RoR tutorial
 It contains tons of awesome stuff that will help you get started with a new Ruby on Rails web app
 very quickly and easily.
+Some of the things already included are:
+
+- Authentication and User Registration
+- Password Recovery
+- Email Confirmation
+- General emailing functionality
+- Facebook Login and Sign up. Link and unlink
+- A Basic User Settings page
+- An Admin Panel and an admin type user
+- Boot Strap integrated
+- A nice layout with header and footer
+- jquery included
+- An image uploader
+- A simple WYSIWYG editor
+- A generic relaionship & connection functionality
+- A "Pages" mechanism to allow you CMS functionality for simple pages
+- A Basic Site map to help with SEO
+- Disqus ready to be integrated
+- An easy to integrate modal function
+- a social sharing mechanism
+- a basic video thumbnail partial
+- Basic encryption and decryption helpers
+- Gravatar and fb image tags for user images
 
 Don't forget to initialize settings found in fog.rb, app_constants.rb and setup_mail.rb and session_store.rb
