@@ -2,6 +2,7 @@ CONSTANTS= Hash.new
 
 #TODO ensure you modify the sesson_store.rb file with your new app cookie storage
 
+CONSTANTS[:header_image] = "logo.png"
 CONSTANTS[  :activation_key] =           "activate!plusarandomstringofnumbers"
 CONSTANTS[  :fb_id] =               "432701290149585"
 CONSTANTS[  :fb_secret] =           ""
