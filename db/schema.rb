@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20120512222955) do
 
-  create_table "base_objects", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "name"
-  end
-
   create_table "pages", force: true do |t|
     t.string   "title"
     t.datetime "created_at", null: false

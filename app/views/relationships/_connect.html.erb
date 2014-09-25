@@ -1,9 +1,8 @@
 <% followed_id = nil if local_assigns[:followed_id].nil? %>
 <% type = nil if local_assigns[:type].nil? %>
 
-<div id="connect_button" class="unselectable new_button right">
   <% if !current_user %>
-     <%= button_to "connect", signin_path + "?redirect_to=" + request.fullpath, :method => "get" %>
+     <%= button_to "connect", signin_path + "?redirect_to=" + request.fullpath, :method => "get", :class => "btn btn-primary"  %>
   <% else %>
 
   <%= form_for(current_user.relationships.build(:followed_id => followed_id, :relationship_type => type ),
@@ -16,5 +15,3 @@
   <% end%>
 
   <% end %>
-
-</div>

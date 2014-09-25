@@ -122,8 +122,14 @@ class User < ActiveRecord::Base
     friends
   end
 
-  private 
-  
+  private
+
+  def image_url
+    if self.fb_user_id
+      "http://graph.facebook.com/#{self.fb_user_id}/picture?type=large"
+    end
+  end
+
     def encrypt_password      
        self.salt = make_salt if new_record?
        if(self.password && !password.blank?)
