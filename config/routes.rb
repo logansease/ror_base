@@ -24,7 +24,6 @@ SampleApp::Application.routes.draw do
     end
   end
 
-  resources :base_objects
   resources :pages
   resources :relationships, :only => [:create, :destroy]
 
