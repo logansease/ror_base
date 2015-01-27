@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(:version => 20120512222955) do
 
+  create_table "tokens", force: true do |t|
+    t.string    "access_token", null: false
+    t.string    "refresh_token", null: false
+    t.date      "expires_on", null: false
+    t.date      "refresh_by", null: false
+    t.integer   "user_id", null: false
+  end
+
   create_table "pages", force: true do |t|
     t.string   "title"
     t.datetime "created_at", null: false

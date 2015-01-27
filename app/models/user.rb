@@ -47,6 +47,8 @@ class User < ActiveRecord::Base
   has_many :following_users,:through => :relationships, :source => :followed_users
   has_many :followers, :through => :user_reverse_relationships, :source => :follower
 
+  has_one :token
+
    ## or class << self
    ## def authenticate(       
   def User.authenticate(email, submitted_password)

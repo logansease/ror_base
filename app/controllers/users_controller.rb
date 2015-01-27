@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   include ApplicationHelper
   require 'cgi'
-  
+
+  before_filter :login_with_access_token
   before_filter :authenticate, :except => [:password_recovery, :send_password_recovery,:send_activation, :activate,:show, :new, :create, :create_fb, :new_fb]
   before_filter :correct_user, :only => [:edit, :update]   
   before_filter :admin_user, :only => [:destroy]
@@ -210,9 +211,9 @@ class UsersController < ApplicationController
   end
 
   def correct_user     
-     @user = User.find(params[:id]) 
+     @user = User.find(params[:id])
      redirect_to(root_path) unless current_user?(@user)
-  end   
+  end
   
   def admin_user
        user = User.find(params[:id])

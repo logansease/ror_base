@@ -26,6 +26,12 @@ SampleApp::Application.routes.draw do
 
   resources :pages
   resources :relationships, :only => [:create, :destroy]
+  resources :tokens, :only => [:create, :index, :destroy] do
+    collection do
+      put :refresh
+    end
+  end
+
 
   root :to => "pages#home" 
   get '/signup', :to => 'users#new'

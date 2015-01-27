@@ -26,7 +26,16 @@ module SessionsHelper
   def set_access_token (token)
     session[:fb_access_token] = token
   end
-  
+
+  def login_with_access_token
+    if params[:access_token]
+      user = Token.user_for_token(params[:access_token])
+      if user
+        @current_user = user
+      end
+    end
+  end
+
   def current_user=(user)
     @current_user = user
   end
